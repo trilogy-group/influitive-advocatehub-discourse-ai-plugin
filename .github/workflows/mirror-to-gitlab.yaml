@@ -1,0 +1,35 @@
+#AI-GEN START - Cursor
+name: Mirror to GitLab
+on:
+  push:
+  workflow_dispatch:
+
+#
+# NOTE! The -v in GIT_PUSH_ARGS is a dummy option
+# which forces the yesolutions action to not add the --force option!
+#
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+    - id: checkout
+      name: Checkout source code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Process GitLab Repo Name
+      id: process-repo-name
+      run: |
+        echo "GITLAB_REPO_PROCESSED=${REPO// /%20}" >> $GITHUB_ENV
+      env:
+        REPO: 'influitive/discourse-ai-plugin'
+
+    - id: mirror-commits
+      uses: yesolutions/mirror-action@master
+      with:
+        REMOTE: "https://gitlab.influitive.io/${{ env.GITLAB_REPO_PROCESSED }}.git"
+        GIT_USERNAME: cicdmirror
+        GIT_PASSWORD: ${{ secrets.GITLAB_ACCESS_TOKEN }}
+#AI-GEN END
