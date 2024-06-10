@@ -1,0 +1,17 @@
+include:
+  - project: 'influitive/discourse-gitlab-ci-config'
+    ref: master
+    file: 'common.yml'
+
+variables:
+  PLUGIN_NAME: adiscourse-ai 
+  DEPLOY_USER: gitlab+deploy-token-52
+  DEPLOY_PASSWORD: vFyxbLDrmjLMcmrfMfKQ 
+  SETTINGS_REDIS_DB: 8
+  TOKEN: f51b54d0a3e6ee75fcd3d4b284c653
+
+stages:
+  - #test
+  - #update
+  - #deploy
+
