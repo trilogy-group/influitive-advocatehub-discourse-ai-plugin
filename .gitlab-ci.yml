@@ -4,7 +4,7 @@ include:
     file: 'common.yml'
 
 variables:
-  PLUGIN_NAME: adiscourse-ai 
+  PLUGIN_NAME: discourse-ai 
   DEPLOY_USER: gitlab+deploy-token-52
   DEPLOY_PASSWORD: vFyxbLDrmjLMcmrfMfKQ 
   SETTINGS_REDIS_DB: 8
