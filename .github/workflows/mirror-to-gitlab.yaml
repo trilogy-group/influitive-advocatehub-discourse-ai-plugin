@@ -30,6 +30,7 @@ jobs:
       uses: yesolutions/mirror-action@master
       with:
         REMOTE: "https://gitlab.influitive.io/${{ env.GITLAB_REPO_PROCESSED }}.git"
-        GIT_USERNAME: cicdmirror
+        GIT_USERNAME: saasops
         GIT_PASSWORD: ${{ secrets.GITLAB_ACCESS_TOKEN }}
+        GIT_PUSH_ARGS: --tags -v
 #AI-GEN END
