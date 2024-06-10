@@ -11,7 +11,7 @@ variables:
   TOKEN: f51b54d0a3e6ee75fcd3d4b284c653
 
 stages:
-  - #test
+  - test
   - #update
   - #deploy
 
