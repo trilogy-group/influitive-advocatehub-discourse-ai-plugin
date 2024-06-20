@@ -12,4 +12,6 @@ variables:
 
 stages:
   - test
+  - update
+  - deploy
 
