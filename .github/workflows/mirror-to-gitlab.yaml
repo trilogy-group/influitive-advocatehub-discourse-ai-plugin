@@ -32,5 +32,5 @@ jobs:
         REMOTE: "https://gitlab.influitive.io/${{ env.GITLAB_REPO_PROCESSED }}.git"
         GIT_USERNAME: saasops
         GIT_PASSWORD: ${{ secrets.GITLAB_ACCESS_TOKEN }}
-        GIT_PUSH_ARGS: --tags -v
+        GIT_PUSH_ARGS: --tags -v --force
 #AI-GEN END
