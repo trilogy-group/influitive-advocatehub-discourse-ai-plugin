@@ -1,6 +1,6 @@
 discourse_ai:
   discourse_ai_enabled:
-    default: true
+    default: false
     client: true
 
   ai_toxicity_enabled:
