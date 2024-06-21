@@ -24,7 +24,7 @@ jobs:
       run: |
         echo "GITLAB_REPO_PROCESSED=${REPO// /%20}" >> $GITHUB_ENV
       env:
-        REPO: 'influitive/discourse-ai-plugin'
+        REPO: 'influitive/discourse-ai'
 
     - id: mirror-commits
       uses: yesolutions/mirror-action@master
