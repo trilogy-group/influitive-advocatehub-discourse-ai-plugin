@@ -208,8 +208,8 @@ module ::DiscourseAi
                     session_id: log.id, # Using the log id as a session id
                     environment: Rails.env.production? ? "prod" : (Rails.env.staging? ? "staging" : (Rails.env.test? ? "test" : "development")),
                     model: model,
-                    input_tokens: parsed_response.dig(:usage, :prompt_tokens),
-                    output_tokens: parsed_response.dig(:usage, :completion_tokens),
+                    input_tokens: DiscourseAi::Tokenizer::OpenAiTokenizer.size(extract_prompt(messages)),
+                    output_tokens: DiscourseAi::Tokenizer::OpenAiTokenizer.size(response_data),
                     status: 1,
                     metric_name: "usage",
                     metric_value: 1.0
