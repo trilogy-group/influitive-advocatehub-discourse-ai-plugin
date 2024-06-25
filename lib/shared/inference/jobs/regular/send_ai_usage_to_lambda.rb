@@ -35,7 +35,9 @@ module ::Jobs
   
       if response.code.to_i != 200
         Rails.logger.error("Failed to send AI usage to Lambda: #{response.body}")
-      end
+      else
+        Rails.logger.info("Successfully sent AI usage to Lambda: #{response.body}")
+      end      
     end
   end
 end
