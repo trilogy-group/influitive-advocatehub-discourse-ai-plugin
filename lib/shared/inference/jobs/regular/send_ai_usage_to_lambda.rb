@@ -26,7 +26,7 @@ module ::Jobs
         efficacy: [
           {
             metric_name: args[:metric_name],
-            metric_value: args[:metric_value]
+            metric_value: args[:metric_value].to_f
           }
         ]
       }.to_json
