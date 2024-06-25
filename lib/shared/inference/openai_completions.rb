@@ -194,6 +194,21 @@ module ::DiscourseAi
                     DiscourseAi::Tokenizer::OpenAiTokenizer.size(extract_prompt(messages)),
                   response_tokens: DiscourseAi::Tokenizer::OpenAiTokenizer.size(response_data),
                 )
+                Jobs.enqueue(:send_ai_usage_to_lambda, 
+                  product_id: "AdvocateHub",
+                  feature_id: "DiscourseAI",
+                  version: "1.0",
+                  customer_id: Discourse.current_hostname,
+                  user_id: user_id,
+                  session_id: log.id, # Using the log id as a session id
+                  environment: Rails.env.production? ? "prod" : (Rails.env.staging? ? "staging" : (Rails.env.test? ? "test" : "development")),
+                  model: model,
+                  input_tokens: parsed_response.dig(:usage, :prompt_tokens),
+                  output_tokens: parsed_response.dig(:usage, :completion_tokens),
+                  status: 1,
+                  metric_name: "usage",
+                  metric_value: 1
+                )
               end
             end
 
