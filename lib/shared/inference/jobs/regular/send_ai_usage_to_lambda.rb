@@ -1,7 +1,8 @@
 # AI-GEN START - cursor
 # frozen_string_literal: true
 
-class Jobs::SendAiUsageToLambda < Jobs::Base
+module ::Jobs
+  class SendAiUsageToLambda < ::Jobs::Base
     def execute(args)
       uri = URI("https://tdd5fcltlbvzzdca7h2ai6j6vy0locnc.lambda-url.us-east-1.on.aws/session")
       http = Net::HTTP.new(uri.host, uri.port)
@@ -37,4 +38,5 @@ class Jobs::SendAiUsageToLambda < Jobs::Base
       end
     end
   end
-  # AI-GEN END
+end
+# AI-GEN END
